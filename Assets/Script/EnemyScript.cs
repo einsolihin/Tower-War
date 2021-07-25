@@ -23,12 +23,6 @@ public class EnemyScript : MonoBehaviour
         instance = this;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -90,8 +84,6 @@ public class EnemyScript : MonoBehaviour
             case Behavior.DistrurbPlayer:
                 int enemyTower = Random.RandomRange(0, GameManager.instance.EnemyTower.Count);
                 int playerTower = Random.Range(0, GameManager.instance.PlayerTower.Count);
-
-                Debug.Log("Total Enemy Tower = "+enemyTower);
 
                 GameObject enemy = GameManager.instance.EnemyTower[enemyTower];
                 GameObject player = GameManager.instance.PlayerTower[playerTower];

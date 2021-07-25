@@ -104,7 +104,6 @@ public class TowerScript : MonoBehaviour
     {
         for(int i =0; i<5;i++)
         {
-            Debug.Log("go");
             if (unit <= 0)
                 break;
             unit--;

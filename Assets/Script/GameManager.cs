@@ -58,10 +58,10 @@ public class GameManager : MonoBehaviour
                 EmptyTower.Add(tower);
                 break;
             case TowerScript.Owner.Enemy:
-                EnemyTower.Remove(tower);
+                EnemyTower.Add(tower);
                 break;
             case TowerScript.Owner.Player:
-                PlayerTower.Remove(tower);
+                PlayerTower.Add(tower);
                 break;
         }
     }
