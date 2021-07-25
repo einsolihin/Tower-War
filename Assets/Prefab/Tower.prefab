@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8396637102450328258}
   - component: {fileID: 8396637102450328256}
   - component: {fileID: 8396637102450328259}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 8396637102490060345}
   - component: {fileID: 8396637102490060351}
   - component: {fileID: 8396637102490060350}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 8396637103452964310}
   - component: {fileID: 8396637103452964305}
   - component: {fileID: 8396637103452964304}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -322,9 +322,9 @@ GameObject:
   - component: {fileID: 8396637103842967138}
   - component: {fileID: 8396637103842967165}
   - component: {fileID: 8396637103842967164}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

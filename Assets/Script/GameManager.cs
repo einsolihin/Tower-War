@@ -10,7 +10,21 @@ public class GameManager : MonoBehaviour
     public List<TowerScript> towerList = new List<TowerScript>();
     public GameObject towers,gameOverPanel;
 
+    public List<GameObject> EnemyTower = new List<GameObject>();
+    public List<GameObject> PlayerTower = new List<GameObject>();
+    public List<GameObject> EmptyTower = new List<GameObject>();
+
     private float playerScore, enemyScore;
+    public static GameManager instance;
+
+    private void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            gameObject.SetActive(false);
+        }
+        instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +32,12 @@ public class GameManager : MonoBehaviour
         foreach(Transform t in towers.transform)
         {
             towerList.Add(t.GetComponent<TowerScript>());
+            if (t.gameObject.GetComponent<TowerScript>().towerOwner == TowerScript.Owner.Enemy)
+                EnemyTower.Add(t.gameObject);
+            else if (t.gameObject.GetComponent<TowerScript>().towerOwner == TowerScript.Owner.Player)
+                PlayerTower.Add(t.gameObject);
+            else
+                EmptyTower.Add(t.gameObject);
         }
         gameOverPanel.SetActive(false);
     }
@@ -26,6 +46,47 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         GetScore();
+    }
+
+    public void addTower(GameObject tower)
+    {
+        TowerScript.Owner towerOwner = tower.GetComponent<TowerScript>().towerOwner;
+
+        switch(towerOwner)
+        {
+            case TowerScript.Owner.Empty:
+                EmptyTower.Add(tower);
+                break;
+            case TowerScript.Owner.Enemy:
+                EnemyTower.Remove(tower);
+                break;
+            case TowerScript.Owner.Player:
+                PlayerTower.Remove(tower);
+                break;
+        }
+    }
+
+    public void removeTower(GameObject tower)
+    {
+        TowerScript.Owner towerOwner = tower.GetComponent<TowerScript>().towerOwner;
+
+        switch (towerOwner)
+        {
+            case TowerScript.Owner.Empty:
+                EmptyTower.Remove(tower);
+                break;
+            case TowerScript.Owner.Enemy:
+                EnemyTower.Remove(tower);
+                break;
+            case TowerScript.Owner.Player:
+                PlayerTower.Remove(tower);
+                break;
+        }
+
+        if (EnemyTower.Count <= 0)
+            GameOver();
+        if (PlayerTower.Count <= 0)
+            GameOver();
     }
 
     public void GetScore()
@@ -42,6 +103,7 @@ public class GameManager : MonoBehaviour
         playerScoreText.text = playerScore.ToString();
         
         enemyScoreText.text = enemyScore.ToString();
+
     }
 
     public void GameOver()

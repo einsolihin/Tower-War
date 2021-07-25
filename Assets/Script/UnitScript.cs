@@ -44,10 +44,10 @@ public class UnitScript : MonoBehaviour
         else if(targetTower.towerOwner != unitOwner)
         {
             targetTower.unit--;
-            if(targetTower.unit<0)
+            if(targetTower.unit<=0)
             {
                 targetTower.unit++;
-                targetTower.towerOwner = unitOwner;
+                targetTower.setPossession(unitOwner);
             }
         }
 

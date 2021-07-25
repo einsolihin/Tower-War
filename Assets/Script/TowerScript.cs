@@ -28,14 +28,14 @@ public class TowerScript : MonoBehaviour
     void Start()
     {
         SR = GetComponent<SpriteRenderer>();
-        if (towerOwner == Owner.Player)
-            AttackTarget(GameObject.Find("Tower (1)"));
+        setPossession();
+        //if (towerOwner == Owner.Player)
+        //    AttackTarget(GameObject.Find("Tower (5)"));
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        setPossession();
 
         //Update the unit value
         if(towerOwner != Owner.Empty)
@@ -60,10 +60,17 @@ public class TowerScript : MonoBehaviour
     {
         Debug.Log("Hello World");
     }
+
     public void setPossession(Owner towerOwner)
     {
-        this.towerOwner = towerOwner;
+        //Remove the tower
+        GameManager.instance.removeTower(this.gameObject);
 
+        //add the tower
+        this.towerOwner = towerOwner;
+        GameManager.instance.addTower(this.gameObject);
+
+        //Update the tower
         switch (towerOwner)
         {
             case Owner.Empty:
@@ -95,7 +102,6 @@ public class TowerScript : MonoBehaviour
 
     public void AttackTarget(GameObject target)
     {
-        
         for(int i =0; i<5;i++)
         {
             Debug.Log("go");
@@ -103,8 +109,7 @@ public class TowerScript : MonoBehaviour
                 break;
             unit--;
             Vector2 dir = (target.transform.position - transform.position).normalized;
-            Debug.Log(dir);
-            Vector2 unitPosition = new Vector2(transform.position.x*0.3f*i, transform.position.y*dir.y);
+            Vector2 unitPosition = new Vector2(transform.position.x+(0.3f*i), transform.position.y*dir.y);
 
             GameObject setUnit = Instantiate(unitObject, unitPosition,Quaternion.identity);
             
