@@ -60,7 +60,6 @@ public class UnitScript : MonoBehaviour
         {
             case TowerScript.Owner.Empty:
                 SR.color = Color.gray;
-
                 break;
             case TowerScript.Owner.Player:
                 //SR.color = Color.cyan;
@@ -69,7 +68,6 @@ public class UnitScript : MonoBehaviour
             case TowerScript.Owner.Enemy:
                 anim.SetLayerWeight(0, 1f);
                 //SR.color = Color.red;
-
                 break;
         }
     }

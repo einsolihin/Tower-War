@@ -15,6 +15,8 @@ public class TowerScript : MonoBehaviour
     public Owner towerOwner = Owner.Empty;
     public GameObject unitObject;
 
+    public List<Sprite> castleSprite = new List<Sprite>();
+
     //How many unit in the tower
     private float second = 1;
     public float unit;
@@ -62,16 +64,16 @@ public class TowerScript : MonoBehaviour
     {
         this.towerOwner = towerOwner;
 
-        switch(towerOwner)
+        switch (towerOwner)
         {
             case Owner.Empty:
-                SR.color = Color.gray;
+                SR.sprite = castleSprite[0];
                 break;
             case Owner.Player:
-                SR.color = Color.cyan;
+                SR.sprite = castleSprite[2];
                 break;
             case Owner.Enemy:
-                SR.color = Color.red;
+                SR.sprite = castleSprite[1];
                 break;
         }
     }
@@ -80,13 +82,13 @@ public class TowerScript : MonoBehaviour
         switch (towerOwner)
         {
             case Owner.Empty:
-                SR.color = Color.gray;
+                SR.sprite = castleSprite[0];
                 break;
             case Owner.Player:
-                SR.color = Color.cyan;
+                SR.sprite = castleSprite[2];
                 break;
             case Owner.Enemy:
-                SR.color = Color.red;
+                SR.sprite = castleSprite[1];
                 break;
         }
     }
