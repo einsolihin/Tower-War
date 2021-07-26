@@ -29,9 +29,40 @@ public class UnitScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //If ai Reach the target
         destination.target = target.transform;
         if (aiPath.TargetReached)
             reachTarget();
+
+        //Ai animation behavior
+        if(aiPath.desiredVelocity.x>0)
+        {
+            if (aiPath.desiredVelocity.x < aiPath.desiredVelocity.y)
+            {
+                if (aiPath.desiredVelocity.y > 0)
+                    anim.SetTrigger("Front");
+
+                else 
+                    anim.SetTrigger("Back");
+            }
+            else
+                anim.SetTrigger("Right");
+        }
+        else
+        {
+            if (aiPath.desiredVelocity.x > aiPath.desiredVelocity.y)
+            {
+                if (aiPath.desiredVelocity.y > 0)
+                    anim.SetTrigger("Front");
+
+                else
+                    anim.SetTrigger("Back");
+            }
+            else
+                anim.SetTrigger("Left");
+        }
+
+        Debug.Log(aiPath.desiredVelocity);
     }
 
     public void reachTarget()

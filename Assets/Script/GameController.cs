@@ -39,12 +39,11 @@ public class GameController : MonoBehaviour
 
     public void StartedClick()
     {
-
+        
     }
     public void EndedClick()
     {
         DetectObject();
-        //action
     }
 
     private void DetectObject()
